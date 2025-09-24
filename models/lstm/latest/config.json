@@ -1,0 +1,11 @@
+{
+  "n_lags": 30,
+  "hidden_size": 32,
+  "num_layers": 1,
+  "dropout": 0.1,
+  "lr": 0.001,
+  "batch_size": 64,
+  "epochs": 60,
+  "test_ratio": 0.25,
+  "corpus_dir": "C:\\Users\\Ilya\\Desktop\\уник\\DeepProject\\stock-forecast-app\\backend\\dataset\\train"
+}

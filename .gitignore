@@ -1,0 +1,24 @@
+# venv (если вдруг локально создадите)
+.venv/
+venv/
+
+# python
+__pycache__/
+*.pyc
+*.pyo
+
+# data/cache
+*.csv
+data/
+.cache/
+
+# env
+.env
+.env.*
+
+# poetry
+poetry.lock
+
+# OS
+.DS_Store
+Thumbs.db

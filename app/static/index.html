@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Stock Forecast Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/static/styles.css?v=0.3.0" />
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <link rel="icon" href="/static/favicon.ico" />
+</head>
+<body>
+  <div class="container">
+    <h1>Прогноз цен (demo)</h1>
+
+    <form id="upload-form">
+      <label>CSV файл:
+        <input type="file" id="csv" name="file" accept=".csv" required />
+      </label>
+
+      <div class="row">
+        <label>Модель:
+          <select name="model" id="model-select">
+            <option value="linreg" selected>LinearRegression</option>
+            <option value="ridge">Ridge</option>
+            <option value="lasso">Lasso</option>
+            <option value="elasticnet">ElasticNet</option>
+            <option value="rf">RandomForest</option>
+            <option value="lstm">LSTM (PyTorch)</option>
+          </select>
+        </label>
+        <label>Число лагов:
+          <input type="number" name="n_lags" value="30" min="1" max="400" />
+        </label>
+      </div>
+
+      <div class="row">
+        <label>Имя столбца цены (target, опционально):
+          <input type="text" name="target" placeholder="например, Close" />
+        </label>
+        <label>Имя столбца даты (опционально):
+          <input type="text" name="date_col" placeholder="например, Date" />
+        </label>
+      </div>
+
+      <div class="row">
+        <label>Доля теста:
+          <input type="number" name="test_size" value="0.2" step="0.05" min="0.05" max="0.9" />
+        </label>
+      </div>
+
+      <!-- LSTM options -->
+      <fieldset id="lstm-box" class="lstm-box" style="display:none">
+        <legend>LSTM параметры</legend>
+        <label><input type="checkbox" name="lstm_corpus" value="1" /> Обучать на всех файлах из ./data</label>
+        <div class="row">
+          <label>Эпохи:
+            <input type="number" name="lstm_epochs" value="15" min="1" max="200" />
+          </label>
+          <label>Hidden size:
+            <input type="number" name="lstm_hidden" value="32" min="4" max="512" />
+          </label>
+        </div>
+        <div class="row">
+          <label>Layers:
+            <input type="number" name="lstm_layers" value="1" min="1" max="4" />
+          </label>
+          <label>Dropout:
+            <input type="number" name="lstm_dropout" value="0.1" step="0.05" min="0" max="0.9" />
+          </label>
+        </div>
+        <div class="row">
+          <label>LR:
+            <input type="number" name="lstm_lr" value="0.001" step="0.0001" />
+          </label>
+          <label>Batch:
+            <input type="number" name="lstm_batch" value="64" min="8" max="1024" />
+          </label>
+        </div>
+      </fieldset>
+
+      <button type="submit">Запустить</button>
+    </form>
+
+    <div id="metrics" class="metrics"></div>
+    <div id="chart" class="chart"></div>
+    <div id="error" class="error"></div>
+  </div>
+
+  <script src="/static/script.js?v=0.3.0"></script>
+</body>
+</html>

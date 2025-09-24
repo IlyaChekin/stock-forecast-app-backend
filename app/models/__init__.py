@@ -1,0 +1,1 @@
+from .lstm import train_lstm_corpus_and_save, predict_with_pretrained_on_series

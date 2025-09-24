@@ -1,0 +1,22 @@
+services:
+  web:
+    build: .
+    image: stock-forecast-backend:latest
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+      - ./dataset:/app/dataset
+      - ./models:/app/models
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+
+  train:
+    image: stock-forecast-backend:latest
+    command: ["python", "scripts/train_lstm.py", "--corpus", "./dataset/train", "--n-lags", "30", "--epochs", "50", "--hidden", "64", "--layers", "2", "--dropout", "0.2", "--lr", "0.0005", "--batch", "128"]
+    volumes:
+      - ./dataset:/app/dataset
+      - ./models:/app/models
+    profiles: ["train"]
+

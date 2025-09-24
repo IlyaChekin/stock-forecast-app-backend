@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+
+# Poetry/venv локальные
+.venv/
+.poetry-cache/
+
+# IDE
+.vscode/
+.idea/
+
+# Данные и артефакты (монтируем отдельно)
+data/
+dataset/
+models/
+
+# Git
+.git/
+.gitignore

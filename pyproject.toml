@@ -1,0 +1,28 @@
+[project]
+name = "stock-forecast-backend"
+version = "0.1.0"
+description = "FastAPI demo for stock price forecasting"
+authors = [{ name = "IlyaChekin", email = "ilya.chekin13@gmail.com" }]
+license = { text = "MIT" }
+readme = "README.md"
+requires-python = ">=3.12,<3.14"
+dependencies = [
+    "fastapi (>=0.117.1,<0.118.0)",
+    "uvicorn[standard] (>=0.37.0,<0.38.0)",
+    "pandas (>=2.3.2,<3.0.0)",
+    "scikit-learn (>=1.7.2,<2.0.0)",
+    "python-multipart (>=0.0.20,<0.0.21)",
+    "aiofiles (>=24.1.0,<25.0.0)",
+    "pydantic (>=2.11.9,<3.0.0)",
+    "requests (>=2.32.5,<3.0.0)",
+    "python-dateutil (>=2.9.0.post0,<3.0.0)",
+    "tqdm (>=4.67.1,<5.0.0)",
+    "torch (==2.8.0)"
+]
+
+[tool.poetry]
+packages = [{ include = "app" }]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
